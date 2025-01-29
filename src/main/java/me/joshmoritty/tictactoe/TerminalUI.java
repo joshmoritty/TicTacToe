@@ -152,8 +152,13 @@ public class TerminalUI {
     }
 
     public void displayResult(MatchResult result) {
-        System.out.println(result.winner.name + " WON THE MATCH!");
-        System.out.println("Moves: " + result.getPlayerMoveCount(result.winner));
+        if (result.type == MatchResult.Type.WIN) {
+            System.out.println(result.winner.name + " WON THE MATCH!");
+            System.out.println("Moves: " + result.getPlayerMoveCount(result.winner));
+        } else {
+            System.out.println("DRAW!");
+            System.out.println("Total moves: " + result.movesCount);
+        }
         System.out.println();
     }
 }

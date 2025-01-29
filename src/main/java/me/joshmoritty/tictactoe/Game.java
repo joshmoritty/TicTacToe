@@ -16,8 +16,6 @@ public class Game {
         while (running) {
             currentMatch = setupMatch();
 
-            MatchResult result;
-
             ui.displayMatchStart();
 
             do {
@@ -27,12 +25,10 @@ public class Game {
                         currentMatch.getCurrentPlayer(), currentMatch.board
                 );
                 currentMatch.placeMark(c);
-
-                result = currentMatch.getResult();
-            } while (result == null);
+            } while (currentMatch.isOngoing());
 
             ui.displayBoard(currentMatch.board);
-            ui.displayResult(result);
+            ui.displayResult(currentMatch.getResult());
 
             rematch = ui.pollRematch();
             if (!rematch) {

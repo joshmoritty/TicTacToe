@@ -24,7 +24,9 @@ public class Match {
 
         Player winner = board.getWinnerAtPosition(c);
         if (winner != null) {
-            result = new MatchResult(players, winner, movesCount);
+            result = new MatchResult(MatchResult.Type.WIN, players, winner, movesCount);
+        } else if (noMovesLeft()) {
+            result = new MatchResult(MatchResult.Type.DRAW, players, null, movesCount);
         }
     }
 
@@ -36,7 +38,15 @@ public class Match {
         return result;
     }
 
+    public boolean isOngoing() {
+        return result == null;
+    }
+
     private int getCurrentPlayerIndex() {
         return movesCount % players.length;
+    }
+
+    private boolean noMovesLeft() {
+        return movesCount >= settings.size * settings.size;
     }
 }

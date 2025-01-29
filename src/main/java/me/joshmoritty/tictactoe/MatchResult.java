@@ -2,11 +2,18 @@ package me.joshmoritty.tictactoe;
 
 public class MatchResult {
 
+	public enum Type {
+		WIN,
+		DRAW
+	}
+
+	public final Type type;
 	public final Player[] players;
 	public final Player winner;
 	public final int movesCount;
 	
-	public MatchResult(Player[] players, Player winner, int movesCount) {
+	public MatchResult(Type type, Player[] players, Player winner, int movesCount) {
+		this.type = type;
 		this.players = players;
 		this.winner = winner;
 		this.movesCount = movesCount;
