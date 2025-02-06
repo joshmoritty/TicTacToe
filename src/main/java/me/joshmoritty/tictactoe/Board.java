@@ -45,15 +45,16 @@ public class Board {
 				{-1, 1} // Diagonal Up
 		};
 		int direction = 0;
-
 		while (lineCount < winCount && direction < 4) {
 			lineCount = 0;
-			int i = clamp(c.y - maxDist * directionDeltas[direction][0]);
-			int j = clamp(c.x - maxDist * directionDeltas[direction][1]);
-			int max_i = clamp(c.y + maxDist * directionDeltas[direction][0]);
-			int max_j = clamp(c.x + maxDist * directionDeltas[direction][1]);
+			int delta_i = directionDeltas[direction][0];
+			int delta_j = directionDeltas[direction][1];
+			int i = clamp(c.y - maxDist * delta_i);
+			int j = clamp(c.x - maxDist * delta_j);
+			int max_i = clamp(c.y + maxDist * delta_i);
+			int max_j = clamp(c.x + maxDist * delta_j);
 
-			while (i <= max_i && j <= max_j) {
+			while (i * delta_i <= max_i * delta_i && j * delta_j <= max_j * delta_j) {
 				if (data[i][j] != null && data[i][j].getPlayer().equals(player)) {
 					lineCount++;
 					if (lineCount == winCount) {
@@ -62,8 +63,8 @@ public class Board {
 				} else {
 					lineCount = 0;
 				}
-				i += directionDeltas[direction][0];
-				j += directionDeltas[direction][1];
+				i += delta_i;
+				j += delta_j;
 			}
 			direction++;
 		}
