@@ -15,8 +15,12 @@ public class TerminalUI {
 
                 if (size >= min && size <= max) {
                     return size;
+                } else {
+                    System.out.println("Please input an integer " + min + "-" + max + "!");
                 }
-            } catch (NumberFormatException ignored) { }
+            } catch (NumberFormatException ignored) {
+                System.out.println("Please input an integer " + min + "-" + max + "!");
+            }
         }
     }
 
@@ -29,8 +33,12 @@ public class TerminalUI {
 
                 if (winCount >= min && winCount <= max) {
                     return winCount;
+                } else {
+                    System.out.println("Please input an integer " + min + "-" + max + "!");
                 }
-            } catch (NumberFormatException ignored) { }
+            } catch (NumberFormatException ignored) {
+                System.out.println("Please input an integer " + min + "-" + max + "!");
+            }
         }
     }
 
@@ -43,8 +51,12 @@ public class TerminalUI {
 
                 if (playerCount >= min && playerCount <= max) {
                     return playerCount;
+                } else {
+                    System.out.println("Please input an integer " + min + "-" + max + "!");
                 }
-            } catch (NumberFormatException ignored) { }
+            } catch (NumberFormatException ignored) {
+                System.out.println("Please input an integer " + min + "-" + max + "!");
+            }
         }
     }
 
@@ -54,6 +66,8 @@ public class TerminalUI {
             String line = s.nextLine();
             if (line.length() == 1) {
                 return line.charAt(0);
+            } else {
+                System.out.println("Please input 1 letter!");
             }
         }
     }
@@ -66,6 +80,8 @@ public class TerminalUI {
                 return true;
             } else if (line.equalsIgnoreCase("n")) {
                 return false;
+            } else {
+                System.out.println("Please input y/n!");
             }
         }
     }
@@ -78,6 +94,8 @@ public class TerminalUI {
                 return true;
             } else if (line.equalsIgnoreCase("n")) {
                 return false;
+            } else {
+                System.out.println("Please input y/n!");
             }
         }
     }
@@ -90,6 +108,8 @@ public class TerminalUI {
                 return true;
             } else if (line.equalsIgnoreCase("n")) {
                 return false;
+            } else {
+                System.out.println("Please input y/n!");
             }
         }
     }
@@ -100,7 +120,10 @@ public class TerminalUI {
             String line = s.nextLine();
             String[] tokens = line.trim().split(" ");
 
-            if (tokens.length != 2) continue;
+            if (tokens.length != 2) {
+                System.out.println("Please input two integers!");
+                continue;
+            }
             try {
                 Coordinate c = new Coordinate(
                         Integer.parseInt(tokens[0]),
@@ -110,6 +133,8 @@ public class TerminalUI {
                 if (board.canPlaceMark(c)) {
                     System.out.println();
                     return c;
+                } else {
+                    System.out.println("You cannot place a mark there!");
                 }
             } catch (NumberFormatException ignore) { }
         }
